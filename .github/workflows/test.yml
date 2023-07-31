@@ -1,0 +1,33 @@
+name: CI Test
+
+on:
+   workflow_dispatch:
+   
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    outputs:
+      os: ${{ steps.check_event.outputs.os }}
+    steps:
+      - name: Check event
+        id: check_event
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo 'os=macos-latest-xl' >> $GITHUB_OUTPUT
+          else
+            echo 'os=macos-latest' >> $GITHUB_OUTPUT
+          fi
+      - name: Set up job
+        run: echo "Setting up job on ${{ steps.check_event.outputs.os }}"
+
+  build-and-screenshots:
+    name: Build and Take Screenshots
+    needs: check
+    runs-on: ${{ needs.check.outputs.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
