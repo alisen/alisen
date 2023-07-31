@@ -14,9 +14,9 @@ jobs:
         id: check_event
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-            echo 'os=macos-latest-xl' >> $GITHUB_OUTPUT
+            echo 'os=ubuntu-latest' >> $GITHUB_OUTPUT
           else
-            echo 'os=macos-latest' >> $GITHUB_OUTPUT
+            echo 'os=ubuntu-22.04' >> $GITHUB_OUTPUT
           fi
       - name: Set up job
         run: echo "Setting up job on ${{ steps.check_event.outputs.os }}"
