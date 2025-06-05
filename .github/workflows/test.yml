@@ -1,8 +1,9 @@
+---
 name: CI Test
 
-on:
-   workflow_dispatch:
-   
+"on":
+  workflow_dispatch:
+
 jobs:
   check:
     name: Check
