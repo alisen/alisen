@@ -39,9 +39,8 @@ jobs:
     needs: check
     runs-on: ${{ needs.check.outputs.os }}
     steps:
-      - uses: actions/checkout@v4.1.7  # Updated to latest stable version with commit pinning recommended
+      - uses: actions/checkout@v5
         with:
-          # Limit git history depth for security and performance
           fetch-depth: 1
 
       # Runs a single command using the runners shell
