@@ -43,6 +43,6 @@ jobs:
         with:
           fetch-depth: 1
 
-      # Runs a single command using the runners shell
+      # Runs a single command using the runner’s shell
       - name: Run a one-line script
         run: echo Hello, world!
